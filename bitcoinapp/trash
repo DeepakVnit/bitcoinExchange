@@ -1,0 +1,18 @@
+# jsondata={u'product': u'LTC', u'USD': 53.39, u'BTC': 0.01279, u'EUR': 45.15}
+    for product_type in product:
+        res = {}
+        finalurl = url + "XRP&tsym=INR&markets="
+        r=urlRequests.request('GET',finalurl)
+        # res=dict(jsondata)
+        res = r.json()
+        res["product"] = product_type
+        res["product_name"] = product_mapping[product_type]
+        resultjson.append(res)
+        return Response(resultjson)
+
+
+
+
+#url = "https://min-api.cryptocompare.com/data/price?fsym="
+#finalurl = url + "XRP"+"&tsyms=BTC,USD,EUR,INR"
+#https://min-api.cryptocompare.com/data/generateAvg?fsym=XRP&tsym=INR&markets=BTCXIndia
